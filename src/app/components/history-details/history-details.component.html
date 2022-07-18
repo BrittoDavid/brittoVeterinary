@@ -1,0 +1,75 @@
+<div *ngIf="showError" class="alert alert-dismissible alert-danger">    
+    <strong>ERROR EXTRACTING DETAILS</strong>
+</div>
+<div class="container pt-5">
+    <div class="container title">
+        <h1>Details</h1>
+        <img [src]="urlImagen" alt="img_clima" width="50px" height="50px">
+    </div>
+    <div *ngIf="loading" class="text-center mt-3">
+        Loading
+        <div class="progress">
+            <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 75%"></div>
+        </div>
+    </div>
+    <div *ngIf="query" class="card">        
+        <div class="card-body">
+            <a class="btn btn-info" routerLink="/historyDetails/add">Add new</a>
+            <table class="table table-hover mt-3">
+                <thead class="text-center">
+                    <th>Id</th>
+                    <th>Temperature</th>
+                    <th>Weight</th>
+                    <th>Heart Rate</th>
+                    <th>Breathing Frequency</th>
+                    <th>Feeding</th>
+                    <th>Habitat</th>
+                    <th>Observacion</th>
+                    <th>Feeding</th>                    
+                    <th>Employee</th>
+                    <th>History</th>
+                    <th colspan="2">Acciones</th>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let histo of historyDetail" class="text-center">
+                        <td>{{histo.id}}</td>
+                        <td>{{histo.temperature}}</td>
+                        <td>{{histo.weight}}</td>
+                        <td>{{histo.heart_rate}}</td>
+                        <td>{{histo.breathing_frequency}}</td>
+                        <td>{{histo.feeding}}</td>
+                        <td>{{histo.habitat}}</td>
+                        <td>{{histo.observacion}}</td>                                                
+                        <td>{{histo.feeding}}</td>
+                        <td>{{histo.name}}</td>
+                        <td>{{histo.history_id}}</td>
+                        <button class="btn btn-warning" (click)="update(histo)">Update</button>
+                        <button class="btn btn-danger" (click)="historyId(histo.id)" data-toggle="modal" data-target="#showModalDelete">Delete</button>
+                    </tr>
+                </tbody>
+            </table>
+    
+        </div>    
+    </div>
+    <div class="modal fade pt-5" id="showModalDelete" tabindex="-1" role="dialog" aria-labelledby="titleWindows" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 id="titleWindows" >Just to make sure</h5>
+                    <button class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="alert alert-danger" role="alert">
+                        <h6>Are you sure you want to delete it?</h6>
+                    </div>                                                         
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-warning" type="button" data-dismiss="modal">No</button>
+                    <button class="btn btn-danger" type="button" (click)="delete()" data-dismiss="modal">Delete</button>
+                </div>    
+            </div>
+        </div>
+    </div>       
+</div>

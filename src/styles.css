@@ -4,3 +4,15 @@
     justify-content: space-between;
     margin-bottom: 2%;
 }
+
+.stylebuttonsup{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 2%;
+}
+
+.titleForms{
+    display: flex;
+    justify-content: center;
+    margin-top: 2%;
+}

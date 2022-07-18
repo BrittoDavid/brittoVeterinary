@@ -1,1 +1,69 @@
-<p>employee works!</p>
+
+<div *ngIf="showError" class="alert alert-dismissible alert-danger">    
+    <strong>ERROR EXTRACTING EMPLOYEE</strong>
+</div>
+<div class="container pt-5">
+    <div class="container title">
+        <h1>Employee</h1>
+        <img [src]="urlImagen" alt="img_clima" width="50px" height="50px">
+    </div>
+    <div *ngIf="loading" class="text-center mt-3">
+        Loading
+        <div class="progress">
+            <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 75%"></div>
+        </div>
+    </div>
+    <div *ngIf="query" class="card">        
+        <div class="card-body">
+            <a class="btn btn-info" routerLink="/employee/add">Add new</a>
+            <table class="table table-hover mt-3">
+                <thead class="text-center">
+                    <th>Id</th>
+                    <th>Name</th>
+                    <th>Last Name</th>
+                    <th>Position</th>
+                    <th>Specialy</th>
+                    <th>Document Type</th>
+                    <th>Identification</th>
+                    <th colspan="2">Acciones</th>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let employee of employees" class="text-center">
+                        <td>{{employee.id}}</td>
+                        <td>{{employee.name}}</td>
+                        <td>{{employee.last_name}}</td>
+                        <td>{{employee.position}}</td>
+                        <td>{{employee.specialy}}</td>
+                        <td>{{employee.document_type}}</td>
+                        <td>{{employee.number_document}}</td>
+                        <button (click)="update(employee)" class="btn btn-warning">Update</button>
+                        <button (click)="employeeId(employee.id)" class="btn btn-danger" data-toggle="modal" data-target="#showModalDelete">Delete</button>
+                    </tr>
+                </tbody>
+            </table>
+    
+        </div>    
+    </div>
+    <div class="modal fade pt-5" id="showModalDelete" tabindex="-1" role="dialog" aria-labelledby="titleWindows" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 id="titleWindows" >Just to make sure</h5>
+                    <button class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="alert alert-danger" role="alert">
+                        <h6>Are you sure you want to delete it?</h6>
+                    </div>                                                         
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-warning" type="button" data-dismiss="modal">No</button>
+                    <button class="btn btn-danger" type="button" (click)="delete()" data-dismiss="modal">Delete</button>
+                </div>    
+            </div>
+        </div>
+    </div>     
+</div>   
+

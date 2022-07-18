@@ -1,0 +1,87 @@
+<div *ngIf="showError" class="alert alert-dismissible alert-danger">    
+    <strong>Uff an error occurred while saving the detail</strong>
+</div>
+<div class="form-group row" *ngIf="showError">
+    <div class="col-sm-12 text-center">                      
+      <button type="submit" class="btn btn-warning" (click)="cancel()">Cancel</button>
+    </div>
+</div>
+<div class="container titleForms">
+    <h1>Update History Detail</h1>
+</div>
+<div class="container pt-2">
+    <div class="card">
+        <div class="card-body">
+            <form>
+                <div class="form-group row">
+                  <label for="temperature" class="col-sm-2 col-form-label" >Temperature</label>
+                  <div class="col-sm-10">
+                    <input type="text" class="form-control" id="temperature" placeholder="Temperature" name="temperature" [(ngModel)]="historyDetail.temperature" required="true">
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label for="weight" class="col-sm-2 col-form-label">Weight</label>
+                  <div class="col-sm-10">
+                    <input type="text" class="form-control" id="weight" placeholder="Weight" name="weight" [(ngModel)]="historyDetail.weight" required="true">
+                  </div>
+                </div>
+                <div class="form-group row">
+                    <label for="heart_rate" class="col-sm-2 col-form-label">Heart Rate</label>
+                    <div class="col-sm-10">
+                      <input type="text" class="form-control" id="heart_rate" placeholder="Heart Rate" name="heart_rate" [(ngModel)]="historyDetail.heart_rate" required="true">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="breathing_frequency" class="col-sm-2 col-form-label">Breathing Frequency</label>
+                    <div class="col-sm-10">
+                      <input type="text" class="form-control" id="breathing_frequency" placeholder="Breathing Frequency" name="breathing_frequency" [(ngModel)]="historyDetail.breathing_frequency" required="true">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="feeding" class="col-sm-2 col-form-label">Feeding</label>
+                    <div class="col-sm-10">
+                      <input type="text" class="form-control" id="feeding" placeholder="Feeding" name="feeding" [(ngModel)]="historyDetail.feeding" required="true">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="habitat" class="col-sm-2 col-form-label">Habitat</label>
+                    <div class="col-sm-10">
+                      <input type="text" class="form-control" id="habitat" placeholder="Habitat" name="habitat" [(ngModel)]="historyDetail.habitat" required="true">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="observacion" class="col-sm-2 col-form-label">observacion</label>
+                    <div class="col-sm-10">
+                        <textarea  lass="form-control" name="observacion" id="observacion" cols="117" rows="3" [(ngModel)]="historyDetail.observacion" required="true"></textarea>                        
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="employee_id" class="col-sm-2 col-form-label">employees</label>
+                    <div class="col-sm-10">
+                        <select class="custom-select" id="employee_id" [(ngModel)]="historyDetail.employee_id" name="employee_id" required="true">
+                            <option *ngFor="let employees of employees" value="{{employees.id}}">{{employees.id}} - {{employees.name}}</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="Status" class="col-sm-2 col-form-label">Medical History</label>
+                    <div class="col-sm-10">
+                        <select class="custom-select" id="inputGroupSelect01" [(ngModel)]="historyDetail.history_id" name="document_type" required="true">
+                            <option *ngFor="let history of history" value="{{history.id}}">{{history.id}} - {{history.name}}</option>
+                        </select>
+                    </div>
+                </div>                  
+                <div class="form-group row">
+                  <div class="col-sm-12 text-center">
+                    <button type="submit" class="btn btn-primary" (click)="updateDetail()">Update</button>                    
+                  </div>
+                </div>                
+            </form>
+        </div>
+        
+    </div>
+</div>
+
+
+
+
